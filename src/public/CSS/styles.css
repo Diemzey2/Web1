@@ -178,6 +178,43 @@ footer {
   background-color: #45a049;
 }
 
+#RegisterForm {
+  margin-bottom: 20px;
+}
+
+#RegisterForm div {
+  margin-bottom: 10px;
+}
+/* Continuación de los estilos del formulario de inicio de sesión */
+#RegisterForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#RegisterForm input[type="text"],
+#RegisterForm input[type="email"],
+#RegisterForm input[type="password"] {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+#RegisterForm button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#RegisterForm button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
 /* Estilos para el mensaje de login */
 #loginMessage {
   font-weight: bold;

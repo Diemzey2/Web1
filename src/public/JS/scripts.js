@@ -3,6 +3,9 @@ $(document).ready(function() {
     const token = localStorage.getItem("token");
     $.ajax({
       url: 'https://diskdealer.cesargonzalez38.repl.co/products',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
       type: 'GET',
       dataType: 'json',
       timeout: 5000,
@@ -127,7 +130,7 @@ $("#crearProductoForm").on("submit", function (event) {
 });
 
 function loginUser(username, password) {
-  fetch("https://fakestoreapi.com/auth/login", {
+  fetch("https://diskdealer.cesargonzalez38.repl.co/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -146,8 +149,9 @@ function loginUser(username, password) {
     })
     .then((json) => {
       console.log(json);
-      localStorage.setItem("token", json.token);
-      window.location.href = "/"; 
+      localStorage.setItem("token", json.access_token);
+      localStorage.setItem("user_id", json.user_id);
+      window.location.href = "/";
     })
     .catch((error) => {
       $("#loginMessage")
@@ -158,7 +162,8 @@ function loginUser(username, password) {
 }
 
 function fetchUser() {
-  fetch("https://fakestoreapi.com/users/1")
+  const userId = localStorage.getItem("user_id");
+  fetch(`https://diskdealer.cesargonzalez38.repl.co/users/${userId}`)
     .then((res) => res.json())
     .then((json) => {
       updateUserUI(json);
@@ -171,24 +176,53 @@ function fetchUser() {
 function updateUserUI(user) {
   const loginDiv = $(".login");
   loginDiv.empty();
-  const userNameDiv = $(`<div>Bienvenido, ${user.name.firstname} ${user.name.lastname}</div>`);
-  const logoutButton = $(`<button id="btnLogout">Cerrar sesión</button>`);
-  const editButton = $(`<button id="btnEdit">Editar</button>`);
-  $("#crearProducto").show();
+
+  const userNameDiv = $(`<div>Bienvenido, ${user.username}</div>`);
+  const logoutButton = $(`<button id="btnLogout">Cerrar sesión</button>`); 
+  const editButton = $(``);
 
   logoutButton.on("click", function () {
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
     location.reload();
   });
 
   editButton.on("click", function () {
-    window.location.href = "/edit-profile.html";
+    window.location.href = "/edituser";
   });
 
   loginDiv.append(userNameDiv, logoutButton, editButton);
 
-  $("#crearProducto").show();
+  // Muestra la tabla y el formulario para crear productos
+  $("#miTabla, #crearProducto").show();
 
   actualizarTabla();
 }
 
+
+
+$('#RegisterForm').on('submit', function(e) {
+  e.preventDefault();
+
+  var username = $('#username').val();
+  var password = $('#password').val();
+  var email = $('#email').val();
+
+  $.ajax({
+    url: 'https://diskdealer.cesargonzalez38.repl.co/users',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      username: username,
+      email: email,
+      password: password
+    }),
+    success: function(response) {
+      alert('Usuario creado con éxito. ID del usuario: ' + response);
+    },
+    error: function(error) {
+      console.error('Error:', error);
+      alert('Hubo un error al crear el usuario. Por favor, inténtelo de nuevo.');
+    }
+  });
+});
