@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detalles del producto</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/images/logo.png" alt="Logo">
+      <span>MusikDealer</span>
+  </header>
+
+  <div class="banner">
+  </div>
+
+  <div class="container">
+    <h1>Detalles del producto</h1>
+
+    <div id="detallesProducto">
+      <!-- Los detalles del producto se llenarán aquí -->
+    </div>
+
+    <a href="index.html">Volver</a>
+  </div>
+
+  <footer>
+    <p>© 2023 MusikDealer. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/JS/detalle.js"></script>
+  
+  <script>
+    document.getElementById('btnLogin').addEventListener('click', function() {
+      window.location.href = '/login';
+    });
+
+    document.getElementById('btnCrearCuenta').addEventListener('click', function() {
+      window.location.href = '/register';
+    });
+  </script>
+</body>
+</html>

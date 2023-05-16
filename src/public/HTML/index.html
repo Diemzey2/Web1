@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi tabla</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/images/logo.png" alt="Logo">
+      <span>MusikDealer - Ordinario Ing. Software II</span>
+    </div>
+    <div class="login">
+      <a href="/login"><button id="btnLogin">Iniciar sesión</button></a>
+      <a href="/register"><button id="btnCrearCuenta">Crear cuenta</button></a>
+    </div>
+  </header>
+
+  <div class="banner">
+  </div>
+
+  <div class="container">
+    <table id="miTabla">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Artista</th>
+          <th>Pesos</th>
+          <th>Dolares</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los datos se llenarán aquí -->
+      </tbody>
+    </table>
+    <div id="crearProducto" style="display: none;">
+      <form id="crearProductoForm">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        <label for="categoria">Categoría:</label><br>
+        <input type="text" id="categoria" name="categoria"><br>
+        <label for="descripcion">Descripcion:</label><br>
+        <input type="text" id="descripcion" name="descripcion"><br>
+        <label for="precio">Precio:</label><br>
+        <input type="text" id="precio" name="precio"><br>
+        <label for="imagen">URL de la Imagen:</label><br>
+        <input type="text" id="imagen" name="imagen"><br>
+        <input type="submit" value="Crear Producto">
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Integrantes: Alejandro Ruanova, César González y William Morán</p>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/JS/scripts.js"></script>
+</body>
+</html>
